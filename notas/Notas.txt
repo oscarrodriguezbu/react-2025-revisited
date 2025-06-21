@@ -1,0 +1,20 @@
+- Vite es mas ligero y rápido que CRC, CRC carga dependencias por si acaso y vite solo lo esencial
+- <button onClick={ handleAdd }> +1 </button> 
+                es lo mismo que 
+   <button onClick={ (event)=> handleAdd(event) }> +1 </button>
+                cuando hay un argumento que solo sirve para ser enviado a un callback
+                entonces se puede abreviar enviando solo el nombre de la funcion a 
+                la que se le va a enviar el argumento
+- Usar un index.js para importar componentes que estan en la misma carpeta. Se le llama archivo barril
+- Vite ya tiene configurado las variables de entorno
+- si quiero que alguna variables sea publico o consumido por react debe nombrarse con la palabra VITE: eje VITE_HOLA
+- en testing los environments no los maneja vite sino jest
+- 
+
+
+
+Repos para subir GitHub:
+- 04-react-vite-counter-app-fin-seccion-5 (tiene pruebas unitarias y todo el contenido visto en las secciones anteriores
+- 05-react-vite-gif-expert-fin-seccion-6 (Usa custom hook, useState y useEffect, formulario sencillo y peticion htttp) el 06-react-gif-expert-fin-seccion-8 tiene los test
+y esta mas completo
+- 

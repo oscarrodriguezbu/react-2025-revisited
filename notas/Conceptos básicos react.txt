@@ -1,0 +1,89 @@
+Conceptos básicos react:
+- React es una librería
+- Se puede trabajar como server-side con node Y Tambien en moviles con react native
+- JSX = JS + XML
+- babel se encarga de traducir codigo moderno a cualquier navegador web en lo posible, por eso no necesitamos preocuparnos por la compatibilidad
+- babel lo usa react pero no es necesario configurar nada, solo es para saber como funciona react
+- Crear aplicacion de react con vite
+- Archivos .js o .jsx es practicamente lo mismo
+- En la carpeta publica tiene un index HTML con un id que se llama en el index.jsx o js de la carpta src
+- <React.StrictMode> el StrictMode es para poder visualizar errores 
+- No se puede renderizar una function asincrona que retorna algo directamente porque genera error
+- Cuando una function solo se necesita una vez, se puede escribir fuera de la function principal y esta no va a ocupar un espacio en memoria
+- siempre se importa primero los hooks
+- Estructura de archivos recomendada paraa react: https://es.legacy.reactjs.org/docs/faq-structure.html  https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76
+- Estilos globales se importan en el main
+-  Evitar trabajar con push en lo posible, la gracia de react es evitar las mutaciones
+- Los inputs necesitan onChange para que react pueda cambiar su value al seguir escribiendo cosas nuevas
+- Cuando se recorre un array para renderizar es obligatorio asignarle un key unico a cada elemento, nunca mandar un index porque en determinados escenarios, react puede confundirse si se elimina un elemento de un array por ejemplo, siempre debe ser un valor unico
+- Todo lo que tenga on en su nombre es para referirse a algo que emita algo como los eventos: onClick, onChange etc...
+- NO SE DEBE EJECUTAR UNA FUNCION DIRECTAMENTE EN UN FUNCTIONAL COMPONENT PORQUE SE EJECUTA MUCHAS VECES
+- Se recomienda importar primero cosas de react, segundo para paquetes instalados y tercero cosas de nuestro codigo
+- Con JSX no se usa class pero si className
+- El ref que se usa normalmente con el useRef, viene de react
+- layaut es el cascaron del componente y pages es la pagina como tal, el layout tiene componentes reutilizables ademtro, por lo tanto se convierte en un high order component
+- 
+
+
+Componentes:
+- Nombrarlos con CamelCase
+- <></> Sirve para evitar envolver en una etiqueta HTML, también se puede con algo que se llama Fragment
+- Los fragmenos no tienen la propiedad key, para eso toca crear por ejemplo un div
+- Los estilos globales se importan en main
+- Null, boolean, undefined no se muestran al renderizarse en una etiqueta HTML
+- En algunas ocasiones los números toque enviarlos por parámetros con {} porque sino, se está manando un string
+- En los argumentos de un componente padre a un hijo se le puede enviar cualquier cosa, incluso funciones
+- si un componente hijo tiene props, se recomienda desestructurarlos
+- Se puede crear un pequeño componente pequeño antes del funcional component del componente padre
+- Colocar nombres dicientes por ejemplo a una pagina se le coloca LoginPage
+- 
+------------------------------------------------------------------------------
+
+Manejo de Rutas en React:
+
+React Router: https://reactrouter.com/home
+- Actualmente está la version 6
+- BrowserRouter es un componente que está a un nivel superior de todo
+- La ruta con / es el homepage
+- No hay refresh al cambiar entre rutas
+- <Route path="/*" element={ <LoginPage /> } /> 
+            Es basicamente el comodin, lo que seria la pagina 404 cuando se ingresa a una ruta no especificada
+- <Route path="/*" element={<Navigate to="/about" />  } />
+          //Navigate redirige a otra pagina
+- Link es para ir a una ruta especificada al hacer clic en un boton por ejemplo y no refresca la pagina
+- Para estilizar el Link, se puede buscar por un a en el css
+- NavLink es lo mismo que el link, pero se le puede especificar una clase dependiendo en donde se encuetre la ruta actual
+- En los argumentos del NavLink tiene el isActive
+- regresar atras:
+const onNavigateBack = () => {
+    navigate(-1); // forma simple de regresar atras
+  }
+- Usar useMemo para que un componente que no se vuelva a redibujar
+- Con un useForm, el query params se maneja como:
+const onSearchSubmit = (event) => {
+    event.preventDefault();
+    // if ( searchText.trim().length <= 1 ) return;
+    navigate(`?q=${searchText}`);
+  }
+- 
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

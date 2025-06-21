@@ -1,0 +1,30 @@
+nvm comandos básicos
+
+
+Listar todas las versiones de node instaladas:
+
+$ nvm ls
+
+Instalar la última versión de node:
+
+$ nvm install node
+
+Ver todas las versiones de node disponibles para instalar:
+
+$ nvm ls-remote
+
+Instalar una versión específica:
+
+$ nvm install [version]
+
+Utilizar una versión específica:
+
+$ nvm use <version> por ejemplo nvm use 22.15.0
+
+Desinstalar una versión específica:
+
+$ nvm uninstall [version]
+
+Establecer una versión de node por defecto
+
+$ nvm alias default [version]

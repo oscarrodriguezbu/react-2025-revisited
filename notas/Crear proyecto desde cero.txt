@@ -1,0 +1,46 @@
+Crear proyecto desde cero:
+
+Basado en el proyecto de las clases de los super heroes y rutas.
+
+1- Instalar proyecto con vite
+2- Definir las carpetas de los modulos o rutas de directorio:
+     assets
+     src:	
+	auth / components, helpers, hooks, pages, context, types, layout, views
+	context
+	nombre del modulo/ components, helpers, hooks, pages
+	hooks
+	componente principal
+	y el main
+	routes
+	router
+	ui/ components
+- Pages son como las vistas en algunos casos
+- El auto se usa para la pagina del login por ejemplo
+- components son componentes reutilizables
+- helpers son funciones reutilizables
+- hooks son también funcione que se encargan de cambiar estados y siempre retornan un valor
+- ui para componentes transversales
+- routes para definir las rutas por modulos
+- router para administrar las rutas de forma general, el principal por lo general se llama AppRouter, también se especifica los router públicos y privados
+- los hooks pueden ser globales o por modulos
+- El context puede ir en la ruta del src o por cada modulo
+- types son los tipos para el reducer, no tiene que ver con TypeScript. Son simples strings, basicamente son los nombres de las acciones que se van a disparar. El redux no necesita esto
+- si hay layout se debe definir primero y luego hacer sus componentes hijos, es muy util para pasarle como params un valor especifico de estilos por ejemplo si hay un sidebar o un navbar
+	y de esa manera se administra el espacio
+- si hay views es lo que va a cambiar, es decir es un componente que cambia con su propia ruta independientemente de otros componetes como el navbar o side bar. Se coloca dentro de pages.
+3- Instalar el react router dom y configurarlo
+- Implementar confiuguraciones de las rutas en componentes
+4- Crear componentes, funcionalidades etc
+
+
+NOTA:
+components: pieza pequeña, Tambien en algunos casos se pueden usar como ui para componentes transversales
+layout: cascaron relacioando al estilo
+pages: es lo que cubre toda la pantalla del usuario 
+views: es lo que va a cambiar, es decir es un componente que cambia con su propia ruta independientemente de otros componetes como el navbar o side bar. Se coloca dentro de pages.
+
+
+
+
+

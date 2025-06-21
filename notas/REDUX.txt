@@ -1,0 +1,78 @@
+REDUX:
+- Es un patron
+- Es un contenedor predecible del estado de la aplicación
+- Se usa con otros frameworks como angular, vue, flutter etc
+- El store es donde está la info que los componentes consumiran
+- Tiene un dispatcher que recibe la action antes de ir al store y dentro pasa por un reducer y luego genera un nuevo state
+- Todo tiene que ser síncrono
+- Si es asíncrono se usan middleware en el dispatcher
+- No todo tiene que ir en el store
+- Se recomienda para aplicaciones grandes sobre el context, pero de todos modos en cualquier caso, redux Tambien puede ser util por ser mas facil de implementar
+- 
+
+
+
+REDUX: Es el patron que crea nuevos estados basados en reducer
+
+
+REACT REDUX: Forma tradicional de trabajar en react con redux, toca hacer mucha configuración manual porque algunas cosas toca hacerlas desde cero
+
+
+REDUX TOOLKIT: Herramientas para facilitar la implementación de Redux
+
+
+RTK Query: Útil para peticiones http, manejare cache etc, viene con el redux, no es un reemplazo de Axios, ayuda evitar traer informacion duplicada almacenando en cache
+
+--------------
+pasos
+1: Crear el store.js
+2. Colocar el store en lo mas alto de la app, index o main
+3. Crear  un reducer y asignarlo en el store, los reducers se manejan con los slices de @reduxjs/toolkit (function que recibe un objeto, el cual tiene el nombre, estado inicial y el reducer)
+4. Usar valores del store y despachar acciones. (useSelector, useDispatch de react redux)
+5. crear el slice
+6. Si se requiere, crear thunk si es algo asincrono
+7. 
+
+
+
+
+NOTAS:
+- useSelector, useDispatch de react redux, SI SE USAN EN TYPESCRIPT, TOCA CAMBIAR ALGUNAS COSAS PARA TENER EL TIPADO CORRECTO
+- action.payload ES EL ARGUMENTO QUE SE ENVIA DESDE EL COMPONENTE CON EL dispatch
+- thunk es una accion o funcion asincrona que dispara otra accion
+- EL SLICE Y EL THUNK BASICAMENTE VAN DE LA MANO
+- dispatch dispara otra accion, es como un next
+- getState en el thunk tiene todo lo que esta en el store
+- los slice manejan constantes mutantes pero no son mutantes en realidad, no es necesario desestructurar
+- No siempre es necesario usar el store en todos los componentes, hay ocasiones que un componente puede mandarle params al componente hijo si sabemos
+	que ese componente hijo es dependiente de lo que tenga que enviarle el padre
+- Se puede crear un custom hook que esté pendiente de los cambios de un store en particular para no usar tanto dispatch, es opcional, hay muchas formas de trabajar
+- El objetivo del reducer es crear un nuevo estado
+- 
+
+
+
+------------------------
+
+RTK Query:
+- Se integra nativamente con redux, viene con redux toolkit
+- crea custom hooks que se van a usar en otra parte. Estos customs hooks se exportan en su respectivo archivo de api: export const { useGetTodosQuery, useGetTodoQuery } = todosApi;
+- Se necesita un reducer para colocar los resultados que se van a disparar y necesarios para trabajar con los hooks de todosApi.js, esto se hace en el store. Tambien se le debe configurar un middleware. Todo este proceso es como almacenar en caché
+- un moddleware es una funcion que se ejcuta antes que otra
+- el cache tiene aproximadamente 1 minuto y luego se empieza a borrar uno por uno la data
+- 
+
+
+
+------------------------
+STORE BASADO EN HOOKS:
+- Util para smiplificar codigo e importaciones inecesarias
+- 
+
+
+
+
+
+
+
+

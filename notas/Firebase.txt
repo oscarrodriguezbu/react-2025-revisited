@@ -1,0 +1,26 @@
+Firebase: base de datos no sql, usa colecciones, como mongodb
+
+- crear proyecto en un proyecto padre en la pagina web de firebase
+- Copiar las credenciales para agregarlas al proyecto
+- configurar las autenticaciones en la pagina de firebase, en este caso se configura el inicio de sesion correo electrónico y Google
+- Los usuarios autenticados se pueden ver en la pantalla de useres
+- Documentación para el inicio de sesión por Google https://firebase.google.com/docs/auth/web/google-signin
+- Toca implementar configuración respectiva del inicio de sesión por goolge
+- updateProfile para actualizar un campo al usuario en firebase
+- en general firebase tiene varias funciones que pueden ser útiles según el caso
+- para ingresar una base de datos para otra cosa que no sea autenticación:
+	- Firestore database
+	- crear base de datos
+	- seleccionar ubicación sugerida de firebase que es la mas cercana
+	- cualquier opción, en el curso se elegió modo en producción
+	- crear y esperar
+	- En reglas colocar: 
+	match /{document=**} {
+      		allow read, write: if request.auth != null;
+    	} //se puede personalizar como desee
+	- Desde la aplicación se guarda lo que se le mande, no hay que hacer nada mas. En la aplicación se prepare el thunk para enviar la data con configuraciones 
+	de firebase
+	- 
+- doc, collection etc, dentro del proyecto hace referencia a la estructura de la data guardada en firebase, debe invocarse la propiedad exacta para hacer una accion
+- merge es una union para mantener la info de la base de datos y guardar lo que se neciste guardar
+- 

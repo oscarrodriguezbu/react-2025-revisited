@@ -1,0 +1,135 @@
+NOTAS GENERALES
+- No probar todo, pero si la ruta critica porque si no, va a tomar mucho tiempo
+- Prueba unitaria es pieza por pieza e integración es todo
+- Principalmente se recomienda pruebas unitarias en mayor medida, pero también se pueden hacer de integración
+- La librerías no se prueban porque se supone que ya han sido probadas, solo las interacciones con esa librería que funcionen en nuestra aplicacion
+- 
+
+
+JEST:
+- Con vite hay que hacer algunas configuraciones previas para usar Jest
+- Se recomienda crear una carpeta test fuera del src conservando la estructura de la ruta de archivo de los componentes originales
+- Inicialización, estimulo y aserción (observar el comportamiento esperado) son las partes fundamentales de las pruebas unitarias
+- toEqual es para comparar objetos
+- Si por ejemplo se prueba una promesa y tiene un then, entonces en las pruebas colocar el expect dentro del then, normalmente es mejor trabajar con async y await
+- done es propio de jest para saber si ya se termino el código e iria al finalizar el then si se está probando una function asincrona
+- Puede que haya problema con fetch por versiones antiguas a la 18 de node, pero por si acaso se puede solucionar intalando node-fetch y haciendo una configuración extra
+  en los archivos de jest del proyecto. En el video instalan el whatwg-fetch
+- Parece que jest no es muy bueno con el react apartir de la versión 18 y por eso se recomienda otras librerías de testing
+- testing-library se puede utilizar en conjunto con jest, testing-library es muy bueno para trabajar con cosas en el dom
+- Jest es para aserciones o cosas de mock
+- En desarrollo no hacer pruebas del snapshot porque siempre va a cambiar y puede ser un dolor de cabeza
+- el screen tiene todas las propiedades, metodos etc del componente renderizado. Se actualiza con todo lo que se le haga en la prueba en cuestion
+- screen.debug(); //muestra el estado del render en consola
+- El fetch puede ser mockeado o puede hacer la petición normalmente
+- Si se prueba una petición no hay necesidad de entrar en tanto detalle, si la función original dice que va a regresar x cosa entonces hay que asegurarnos que asi sea
+- Para peobar componentes es muy importante que si necesitan parámetros para funcionar, asegurarse que tengan en su archivo original el PropTypes.func.isRequired y probar eso en el primer test
+- const form  = screen.getByRole('form'); // el form original debe tener aria-label="form" para poder encontrarlo
+- const onNewCategory = jest.fn(); //es una funcion mockeada
+- en la prueba no es necesario llamar al verdadero customHook, se supone con son unitarias y solo importa el componente como tal
+- Para Hooks suponer que el hook Funciona y simular sus resultados
+- jest.mock('../../src/hooks/useFetchGifs'); //mook del hook, con eso en cada prueba que necesite el hook debe tener sus resultados simulados
+- Para customHooks no se necesita instalar nada adicional para trabajar en ellos desde react 18
+- const { result } = renderHook( () => useFetchGifs('One Punch') ); //renderHook para ejecutar y simular el hook
+  const { images, isLoading } = result.current;
+- waitFor //toca esperar que se carguen las imagenes porque en el original se hace un fetch
+await waitFor( 
+            () => expect( result.current.images.length ).toBeGreaterThan(0)
+        );
+- al waitFor se le puede mandar como un segundo argumento un timeout por si el endpoint falla o se demora mucho
+- Se recomienda empezar el test con las piezas que menor dependencias tienen
+- expect( decrement ).toEqual( expect.any( Function ) ); //espera que recibe una función
+- Simular la ejecución de una función que actualice el estado de react: 
+act( () => {
+            increment();
+            increment(2);
+        });
+- import { act, renderHook } from '@testing-library/react';
+- Crear una constante para hacer referencia a un botón para trabajar con el
+- mockear un fetch result: useFetch.mockReturnValue({
+            data: [{ author: 'Fernando', quote: 'Hola Mundo' }],
+            isLoading: false,
+            hasError: null
+        });
+- aria-label sirve para buscar una etiqueta HTML si no se puede por rol, pero en este caso seria por getByLabelText
+
+
+CICLO DE VIDA DE PRUEBAS
+-  beforeEach( () => {
+        jest.clearAllMocks(); //Limpia los mochs antes de cada prueba
+    }); //muy bueno cuando se importan multiples hooks con jest.mock
+- 
+
+
+-----------------------------------------------------------------------------------------------------------------------
+----------------------------
+
+CUSTOMS HOOKS
+- Jest necesita otra librería para probar los customs hooks
+- renderHook es como un mock de un hook que se le pase
+- 
+
+useCounter:
+- Se hace un ajuste en el hook para poder trabajar con el valor de current y ejecutar la función con un act en la prueba unitaria
+- 
+
+userContext componentes:
+- Se prueba de esta forma el componente: 
+render( 
+            <UserContext.Provider value={{ user: null }}>
+                <HomePage /> 
+            </UserContext.Provider>
+        );
+- 
+
+----------------------------
+
+
+HOOKS DE REACT
+- Probar los efecto mas no los hooks como tal
+
+Reducer:
+- Se maneja como una función, no es tan complicado
+
+----------------------------
+
+
+Componentes con hooks multiples:
+- Mockear uno o mas customshooks: 
+	jest.mock('../../src/hooks/useFetch');
+	jest.mock('../../src/hooks/useCounter');
+- 
+
+Router
+- El componente que va después del main hacia abajo:
+render( 
+            <MemoryRouter>
+                <MainApp /> 
+            </MemoryRouter>
+        );
+- MemoryRouter es para ayudar a probar el BrowserRouter
+- Para simular estar en una ruta:
+ <MemoryRouter initialEntries={['/login']}>
+                <MainApp /> 
+            </MemoryRouter>
+- otro ejemplo de mock para el mock del react-router-dom':
+const mockedUseNavigate = jest.fn(); //para el mock del useNavigate
+
+//mock del react-router-dom'
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'), //se optiente todo lo rel react-router-dom
+    useNavigate: () => mockedUseNavigate, // es lo que necesito para la prueba
+}));
+- beforeEach(() => jest.clearAllMocks()); para limpiar todos los mocks antes de cada prueba
+- 
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Carga de archivos:
+- En cloudinary, seguir la documentacion oficial y listo, eliminar la imagen subida luego de hacer la prueba
+- Con firebase se necesita crear una base de datos paralela si se puede o un nuevo proyecto dedicado para la nueva db (tier gratuito) para hacer las pruebas unitarias
+- en testing los environments no los maneja vite sino jest, pero hay que hacer algunas configuraciones adicionales para trabajar un env.testing y no el de produccion, se puede instalar un paquete llamado dotenv para ayudar un poco
+- 
+

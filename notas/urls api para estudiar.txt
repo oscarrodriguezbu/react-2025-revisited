@@ -1,0 +1,6 @@
+urls api para estudiar:
+- https://developers.giphy.com/dashboard/?ar=1
+- https://pokeapi.co/
+
+otras url:
+- animaciones: https://animate.style/ 

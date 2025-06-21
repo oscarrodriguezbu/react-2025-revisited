@@ -1,0 +1,16 @@
+snippets:
+
+- crear cuerpo HTML en un archivo HTML: ! y luego tab 
+- Para importar: imp y tabular. Si se crea un export recientemente y luego se quiere importar inmediatamente, entonces
+	cerrar y abrir el archivo, escribir la palabra de lo que se quiere exportar y dar clic en tab cuando se seleccione para
+	crear una importación de forma automática
+- rafc y tab para crear estructura de un componente rápidamente
+- desc y tab para agregar una descripcion en pruebas unitarias
+- test y tab para agregar seccion de test en pruebas unitarias
+- clo y tab para crear un console log, Tambien funciona cwa o cer
+- useffect, seleccionar el que diga snippet y enter, lo mismo con otros hooks
+- 
+
+
+custom snippet:
+- redux-silce y tabular

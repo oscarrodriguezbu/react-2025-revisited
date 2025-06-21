@@ -1,0 +1,132 @@
+Hooks:
+
+- Hacen algo como si se estuviera trabajando un functional component comun y corriente y siempre retornan algo
+- Pueden regresar un JSX
+- Si hay muchos hooks ejecutandose en una function, solo se renderiza cuando terminen de ejecutarse todos los hooks en esa function (Despues de react 18)
+- No se recomienda hacer un if else a los hooks
+- El name es muy importante para configurar un onChange en un campo de un formulario
+- Pagina recomendada para manejar el cache y curso gratuito https://fernando-herrera.com/course/react-query/
+
+- UseState: 
+-- const [ counter,       setCounter ]                      = useState( value );
+      [val que cambia, la funcion que lo hace cambiar]   =   val inicial
+-- setCounter( counter + 1 );// opcion sencilla
+   setCounter( (c) => c + 1 ) // el c es el valor actual por si se necesita hacer algo mas con ese valor
+-- Cuando cambia el estado, el componente se vuelve a ejecutar
+
+- UseEffect: 
+-- Cuando pase algo quiero que tenga un efecto
+-- Tiene dos argumentos, una function que quiero que se ejecute y la condicion o algo que si cambia, se ejecute la function del primer parametron
+-- si se coloca [] en el seegundo argumento quiere decir que solo se va a ejecutar una sola vez cuando se renderice el componente
+-- Tiene un return que se usa normalmente como para limpiar
+-- NO PUEDE SER ASINCRONO
+-- Se recomienda una funcionalidad concreta y separada de un solo condicional para que se dispare
+
+- useRef():
+-- es la referencia a una etiqueta html
+-- Puede tener un valor inicial
+-- Es para no hacer una renderizacion cuando la referencia cambie
+-- Se usa mucho con typescript
+-- Se usa Tambien para hacer referencia a un input de carga de archivos si este se desea ocultar y se le delega el clic a un icono externo
+-- 
+
+-useLyoutEffect:
+-- Tiene un uso particular, hay que priorizar el UseEffect
+-- Sirve para trabajar por ejemplo con el tamaño de los componentes, como un tooltip etc. Aunque se puede hacer eso con css pero por si acaso
+-- 
+
+-useReducer:
+-- Es una function comun y corriente, no puede ser asincrona
+-- Debe retornar un nuevo estado
+-- Todo lo que tenga que hacer, lo debe resolver internamente
+-- Usualmente recibe dos argumentos, estado inicial y la accion a ejecutar
+-- Debe ser una function pura, no debe tener efectos secundarios
+-- No se debe de mutar un estado, nada de push o let, nada de eso.
+-- No se debe llamar el local o sessionStorage dentro el reducer por son considerados efectos secundarios
+-- No debe requerir mas que una accion que puede tener un argumento
+-- La idea es tener controlado en un solo lugar todas las acciones que modifican el state o estado de la aplicacion
+-- La accion es quien le dice al reducer como quiero que cambie el estado
+-- Estructura general de la accion: 
+const addTodoAction = {
+    type: '[TODO] add todo',
+    payload: newTodo,
+}
+-- La accion no siempre puede llevar un payload, como por ejemplo cuando quiero que se elimine algo
+-- El type es un string para saber de que se trata la accion
+-- Estructura general del useReducer: const [state, dispatch] = useReducer(reducer, initialArg, init?)
+-- dispatch es la function que vamos a mandar a llamar o disparar
+-- init es una function de inicializacion y se usa cuando se tiene un state pesado y el resultado de esa function termina siendo el estado inicial
+-- const [state, dispatch] = useReducer(first, second, third) la estructura con el snippet del visual s code
+-- Ejemplo de un useReducer:
+const [ todos, dispatch ] = useReducer( todoReducer, [], init ); 
+    //todoReducer es un reducer que tiene initialState y action, y luego action tiene type y payload. Ese reducer se importa para dejar el codigo limpio.
+    // [] es initialArg
+    //init viene de const init, es lo que quiero que tenga la pantalla al cargar por primera vez
+--
+
+-useContext: (09-react-hooks-fin-seccion-11)
+-- Mejora la comunicacion entre componentes
+-- El context está a un nivel superior de todos los componentes. Alli se almacena y se distribuye la data guardada.
+-- Puede haber varios context dependiendo de la tematica
+-- En un provider tiene el children en los props además de los demas
+-- El value del privider es lo que va a compartirse en todos los componentes hijos
+-- El provider se pone en lo más alto donde los hijos necesitan consumir esa data, esa data solo debe ser algo util y no sensible, tampoco se recomienda compartir 
+	cosas como un dispatch o algo asi para no darle tanto poder a los hijos, quizá es bueno cuando todo está modularizado,
+	pero desde el provider superior no. En su lugar se puede mandar funciones que contengan el dispatch y hagan algo concreto como el login o logout
+-- El useContext es muy parecido al useState: const { user, setUser } = useContext( UserContext );
+-- Lo que se la pasa al useContext es un context que se encuentre mas arriba del componente actual
+-- Es muy raro tener mas de un context
+-- 
+
+---------------------
+Los siguientes hooks puede que ya no se utilicen a partir de react 19:
+No son tan necesarios pero se pueden usar para mejorar el rendimiento por si acaso,
+Se encuentran en react-hooks-fin-seccion-9-desactualizado
+
+-useMemo:
+-- el memo recibe y memoriza el componente, solo cuando la propiedad del componente cambie, entonces vuelve y se ejecuta
+-- Se recomienda si son componentes muy grandes
+-- memoriza el resultado para que react no lo vuelva a renderizar
+-- se parece un poco al useEffect y se puede usar sobre funciones ===> const memorizedValue =  useMemo( () => heavyStuff(counter), [counter])
+-- Hay ocasiones que si no funciona entonces se puede pensar en usar el useCallback en compañia
+
+-useCallBack:
+-- se parece un poco al useEffect 
+-- Sirve para memorizar funciones y se ejecuta cuando algo cambia. Tener en cuenta que las funciones como los objetos, apuntan a un espacio diferente de memoria
+-- Funciona bien con useMemo
+
+---------------------
+
+Custom Hooks creados en el curso:
+- useFetchGifs en 05-react-vite-gif-expert-fin-seccion-6 Para hacer peticion http y trabajar los estados useEffect para controlar el rendimiento y el renderizado
+- useCounter
+- useForm. Hay un paquete de terceros (react-hook-form) que usa este hook mucho mas completo, pero para cosas sencillas, el useForm de este curso va muy bien
+- useFetch //toca enviarle la url desde el componente
+- 
+
+---------------------
+
+Otros custom hooks:
+- useNavigate: viene del react router dom para ayudar con la navegacion del proyecto, ejemplo:
+    const { user, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const onLogout = () => {
+        logout();
+        navigate('/login', {
+            replace: true //evita que pueda regresar al historial anterior
+        });
+    }
+- useParams: viene del react router dom para optener el id o lo que sea que se mande como parametros en una url, pero no un query params
+- useLocation:  viene del react router dom, tiene data como el hash, el key, el pathname, el search y el state de la pagina actual
+	se recomienda instalar y usar queryString para optener lo que esté en el search
+	Tambien sirve para ayudar a recordar la ultima pagina visitada antes de cerrar session:
+	const { pathname, search } = useLocation();    
+    	const lastPath = pathname + search;
+    	localStorage.setItem('lastPath', lastPath );
+	con useEffecto o con memo se podria evitar que se ejecute constantemente
+- 
+
+
+
+
+

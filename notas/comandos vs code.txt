@@ -1,0 +1,13 @@
+comandos vs code:
+
+- Seleccionar una palabra y pulsar f2 o FN +F2 luego escribir una nueva palabra y enter. Con esto se cambian todas las palabras repetidas
+- CTRL + / para comentar una sola linea
+- CTRL + SHIFT + A para comentar varias líneas
+- mantener ALT y dar clic en diferentes líneas para seleccionarlas
+- mantener alt + flecha arriba o abajo para mover esa linea de código
+- CTRL + D sobre una palabra seleccionada para buscar palabras iguales y seleccionarlas Tambien
+- Shift + tab en una o varias lineas de codigo para mover atras el texto
+- CTRL + ALT + FLECHA ARRIBA O ABAJO PARA CREAR MULTICURSORES
+- CTRL + SHFT + P, ESCRIBIR SORT AS Y SELECCIONAR ASCENDING PARA ORDENAR ALGO
+- CTRL + SHFT + P, PARA BUSCAR CUALQUIER COSA QUE SE DESEE, COMO ALGUNA CONFIGURACION DE UN PLUGIN ETC
+- 

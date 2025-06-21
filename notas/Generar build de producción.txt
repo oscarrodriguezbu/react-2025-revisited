@@ -1,0 +1,27 @@
+Generar build de producción:
+
+Netifly:
+- npm run build para generar los archivos para subir
+- Se puede desplegar cosas de frontend
+- Iniciar sesión y simplemente arrastrar la carpeta producida y listo
+- Se puede cambiar ligeramente el dominio el el tier gratuito
+- 
+
+GitHub Pages:
+- Git y GitHub son diferentes, git es para gestionar los archivos y GitHub es para almacenar lo de git en la nube, pero hay otros administradores similares
+- Comandos:
+-- git init
+-- git add . (esto prepara los archivos del proyecto y toma una especie de fotografía
+-- git commit -m "mensaje del commit"
+-- ESTO POR SI ACASO CUANDO HAYA PROBLEMAS: git checkout -- . (reconstruye todo lo que estaba en el ultimo commit en caso de que se haya eliminado algo accidentalmente
+-- Entar a GitHub, iniciar sesión, crear repositorio, opcional colocar descripción, colocar readme, etc
+-- Del paso anterior aparece una lista de códigos pero muchos códigos ya se hizo anteriormente entonces colocar 
+	git remote add origin url-que-nos-da-el-GitHub, luego git Branch -M main y luego git push -u origin main
+-- Después para subir cambios es solo git add . y luego git commit -m "mensaje del commit"
+-- El README es un markdown, se agrega una descripción de versiones, lenguajes, paquetes, usos etc.
+-- En settings de GitHub esta el pages que es donde se puede desplegar un frontend rápidamente
+-- En GitHub pages toca cambiar el nombre de la carpeta dist a docs del proyecto que resulta de correr el npm run build
+-- Luego seleccionar la rama en pages de GitHub y seleccionar la carpeta docs, clic en save y esperar
+-- Al desplegar y ver el proyecto puede aparecer error de hashes o # en las url, entonces toca arreglarlo colocando un . antes del / de los assets en el index.html de la carpeta docs y subir actualizacion, toca esperar a que se procese el despliegue para ver los cambios reflejados
+-- 
+

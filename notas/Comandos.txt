@@ -1,0 +1,13 @@
+- Crear app de react: En la carpeta donde va estar el proyecto en consola colocar: npm create vite, luego npm i
+- Arrancar proyecto con npm run dev
+
+
+Testing:
+- npm install --save-dev jest (luego hay que agregar los scripts en package json)
+- npm install --save-dev @types/jest para agregar el tipado de jest
+- npm install --save-dev babel-jest @babel/core @babel/preset-env (luego hay que configurar un archivo en babel, ver la documentacion de jest)
+- npm install --save-dev @testing-library/react @testing-library/dom (es un complemento para trabajar con componentes de react)
+- npm install --save-dev jest-environment-jsdom (es para solventar unos errores con el react library. Hay que hacer unas configuraciones en los archivos 
+	de jest y babel en la raiz del proyecto.
+- npm run test
+- 

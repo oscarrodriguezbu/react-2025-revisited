@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cargar React -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Nota: babel se encarga de traducir codigo moderno a cualquier navegador web en lo posible -->
+
+    <title>Curso de React</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        //<script> //esto causa error si lo dejo asi no mas
+        const divRoot = document.querySelector('#root');
+        const nombre = 'Azuka'
+        const h1Tag = <h1> Holaaa a todos soy {nombre}, feliz jueves. </h1>; //esto es jsx que es = js + xml // y genera error
+
+        ReactDOM.render(h1Tag, divRoot);
+
+
+    </script>
+
+</body>
+
+</html>
