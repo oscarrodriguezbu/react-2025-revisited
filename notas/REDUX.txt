@@ -58,7 +58,7 @@ RTK Query:
 - Se integra nativamente con redux, viene con redux toolkit
 - crea custom hooks que se van a usar en otra parte. Estos customs hooks se exportan en su respectivo archivo de api: export const { useGetTodosQuery, useGetTodoQuery } = todosApi;
 - Se necesita un reducer para colocar los resultados que se van a disparar y necesarios para trabajar con los hooks de todosApi.js, esto se hace en el store. Tambien se le debe configurar un middleware. Todo este proceso es como almacenar en caché
-- un moddleware es una funcion que se ejcuta antes que otra
+- un moddleware es una funcion que se ejecuta antes que otra
 - el cache tiene aproximadamente 1 minuto y luego se empieza a borrar uno por uno la data
 - 
 
@@ -66,7 +66,8 @@ RTK Query:
 
 ------------------------
 STORE BASADO EN HOOKS:
-- Util para smiplificar codigo e importaciones inecesarias
+- Util para smiplificar codigo e importaciones innecesarias
+- En el proyecto del calendario se usa los hooks useAuthStore y useCalendarStore para esto, esto es otra opcion si no se quiere usar thunks
 - 
 
 

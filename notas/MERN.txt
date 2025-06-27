@@ -1,0 +1,7 @@
+MERN:
+
+Una vez construido parte del front y el backend, ir al front y seguir los siguientes pasos:
+- Crear variables de entorno y un helper para retornar esas variables de entonro
+- Se puede usar Axios para la conexión con el backend
+- Guardar token en localstorage al iniciar sesión y luego colocar un interceptor en axios que lea ese token y lo mande en todas las peticiones que lo requieren
+- 

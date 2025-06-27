@@ -1,0 +1,34 @@
+Cosas de GitHub
+
+
+-------------------------Ingresar a una carpeta y usar un usuario localmente-------------------------
+git init
+
+git config user.email "oscarleorb@gmail.com" 
+para agregar ese correo
+
+git config user.email
+para ver el usuario de esa carpeta
+
+
+
+---------lo siguiente hay que pegar la url que arroja el repo creado en github-------------------------
+git branch -M main
+git remote add origin https://github.com/oscarrodriguezbu/react-vite-gif-expert-fin-seccion-6-2025.git
+---------
+
+git pull origin main
+SI SE HA CREADO UN README EN GITHUB
+
+git add .
+git commit -m "first commit"
+git push -u origin main
+
+
+
+------------------produccion de frontend:-------------------------
+npm run build
+
+Se genera una carpeta dist y lo que está adentro toca pegarlo en la carpeta public del backend
+
+Desplegar o subir cambios del backend en GitHub, railway toma los cambios del GitHub si ya se habia desplegado antes y se actualizó el repo del backend

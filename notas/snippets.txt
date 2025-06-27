@@ -9,6 +9,7 @@ snippets:
 - test y tab para agregar seccion de test en pruebas unitarias
 - clo y tab para crear un console log, Tambien funciona cwa o cer
 - useffect, seleccionar el que diga snippet y enter, lo mismo con otros hooks
+- desc en archivos de testing y crea el describe
 - 
 
 

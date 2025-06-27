@@ -52,7 +52,28 @@ act( () => {
             hasError: null
         });
 - aria-label sirve para buscar una etiqueta HTML si no se puede por rol, pero en este caso seria por getByLabelText
-
+- Se requiere modificacion para trabajar con modulos de css para archivos que lo tienen implementado
+- Si no se quiere iniciar una function mediante algun elemento html, entonces se puede llamar la function mediante:
+	act(() => {
+      		result.current.toggleDateModal();
+    	});
+	Para mas info ver el proyecto del calendario de react, en especifico el useUIStore
+- Se puede usar spys Tambien, esto es util para no guardar cosas en la base de datos por ejemplo: mas info en el test de useAuthStore del calendario de react
+	const spy = jest.spyOn(calendarApi, "post").mockReturnValue({
+     	 data: {
+       	 	ok: true,
+       	 	uid: "1263781293",
+       		 name: "Test User",
+       	 	token: "ALGUN-TOKEN",
+      		},
+    	});
+- spy.mockRestore(); // desíes de la prueba para destruir el spy por si acaso, para no afectar otra prueba
+- Si hay alguna function o inicializacion de algun componente que no perimite hacer algo en testing, entonces ir a ese componente y hacer una validacion algo asi;
+	if (getEnvVariables().VITE_MODE !== 'test') { //esto es importante para ignorar esto si se ejecuta en testing
+    		Modal.setAppElement('#root');
+	}
+- Pruebas a componentes de terceros: No probarlos porque se supone que ya vienen probados, pero se puede hacer un mock para evitar trabajar con el original y probar 
+	nuestra aplicacion
 
 CICLO DE VIDA DE PRUEBAS
 -  beforeEach( () => {

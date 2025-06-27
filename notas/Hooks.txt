@@ -21,6 +21,8 @@ Hooks:
 -- Tiene un return que se usa normalmente como para limpiar
 -- NO PUEDE SER ASINCRONO
 -- Se recomienda una funcionalidad concreta y separada de un solo condicional para que se dispare
+-- Tener cuidado de usarlo en un custom hook porque se va a disparar en todas partes donde ese custom hook sea usado, solo colocarlo si eso es lo que se necesita
+-- 
 
 - useRef():
 -- es la referencia a una etiqueta html

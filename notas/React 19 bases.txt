@@ -1,0 +1,27 @@
+React 19 bases:
+Puntualmente veremos:
+
+use - Nueva API
+
+ErrorBOundaries
+
+useActionState - Nuevo Hook
+
+useFormStatus - Nuevo Hook
+
+useOptimistic - Nuevo Hook
+
+--------------------------------------------
+
+- Suspense es un componente especial de react para mostrar algo mientras esta cargando algo
+- ErrorBoundary Maneja los errores si el lo que se quiere que se muestre en el suspense falla, es un componente personalizado para complementar el de Suspense
+- Hook useActionState: 
+	const [state, formAction, isPending] = useActionState(
+    		async (prevState: unknown, queryData: FormData) => {
+      		const planet = await createPlanetActionForm(prevState, queryData);
+      		onAddPlanet(planet);
+    		},
+    	null // es el valor inicial
+  	);
+- useFormStatus(); // se usa para intercambiar info entre componante padre e hijo.
+- 

@@ -1,0 +1,88 @@
+NodeJs:
+
+Iniciar proyecto escribiendo líneas de código manualmente:
+- npm init -y para crear un package.json con toda la configuración por defecto
+- crear archivo index.js
+- node index.js para arrancar el proyecto pero sin hot load,
+- nodemoon para arrancar el proyecto y que detecte los cambios en caliente. npm i nodemon -g, en Windows toca instalarlo como administrador
+- En el curso usaron la versión 2.0.4 y en 2025 en el momento en que estoy viendo los videos de nuevo instalé la versión 3.1.10
+- nodemon index.js es el comando para arrancar el proyecto en caliente, se cambia en package json en los scripts para arrancar con npm start:
+	"scripts": {
+    	"dev": "nodemon index.js",
+    	"start": "node index.js"
+  	}
+- Express muy útil para crear servidores: npm i express
+- Configurar el index con express
+- configurar directorio public y variables de entorno. 
+- app.use(express.static("public")); //use es un middleware, es una funcion que se ejecuta siempre antes de que pase por algun lugar
+- npm dotenv para instalar los recursos necesarios para trabajar con env
+- Manejar rutas en carpetas separadas e importar las primarias en el index. La carpeta donde estarán las rutas se llama routes
+- Para tener un código mas limpio, crear una carpeta de controllers para manjear las funciones necesarias para cada ruta
+- express ya viene listo para parsear el body
+- reglas de validación en los controllers, se puede instalar paquetes como npm i express-validator
+- Colocar middlewares en modo array antes del controlador en la ruta, para validar
+- Se crea una carpeta a parte de middlewares para guardar validaciones personalizadas pero lo mas importante, es que haya un archivo que valide de manera general cada campo y como un array me diga si hay errores o no y esa respuesta se envia al controlador automáticamente
+
+COSAS DE MONGO:
+- Crear una cuenta mongodb en mongo atlas de la pagina web luego iniciar sesión (EN EL CASO DE TRABAJAR CON MONGO, EL CURSO ES DE STACK DE MERN), crear closter con configuración por defecto, elegir tier gratuito, colocar nombre y conectar con mongoDBCompass, copiar y pegar url como: mongodb+srv://oscarleorb:XKKk9nHXoctIpyZi@mernproyect.pzz8pp3.mongodb.net/ en dbcompass si no requiere modificar nada, pero si va a crear un usuario entonces hacer el siguiente paso.
+- en mongo atlas, ir a database Access, add new database user, colocar usuario y contraseña, asignar read and write to any database, guardar, modificar url y pegarla en dbcompass
+- el resto se hace en mongo db compass por comodidad
+- instalar mongoose para la comunicación con mongo desde nodejs, hacer las configuraciones de mongoose en el backend. Carpeta database.
+- colocar la url de conexión de mongo en un env del proyecto, al final colocar /nombreBD
+- Importar configuración de la base de datos en el index del backend
+- Crear los modelos con mongoose, es como va a lucir la data en la bd
+- El modelo se importa en el controlador respectiva y dentro de el, se hace una instancia del modelo para guardar en la base de datos si pasa las validaciones respectivas
+- En el controlador se puede crear validaciones personalizadas consultando la data de la base de datos, esto complementa las validaciones del validator
+- 
+
+
+Volviendo a cosas de node:
+- Hashear contraseñas con bcryptjs, instalarlo y usarlo en el controlador respectivo
+- Instalar jwt, no enviar data sensible en el token. Enviar por ejemplo id del usuario, nombre, etc
+- El token tiene configuraciones como tiempo expiración, la firma para crear o leer el token etc
+- Colocar configuración del jwt en una carpeta helpers. 
+- También un archivo para validar el jwt en los middlewares
+- Agregar el validador en la ruta respectiva para validar el token
+- crear un SECRET_JWT_SEED en el env para firmar los token
+- usar el jwt en el controlador respectivo
+NOTA: SI SE CAMBIA LA FIRMA EN LOS ENV, AUTOMATICAMENTE TODOS LOS TOKEN QUEDAN INHABILITADOS, ESTO ES UTIL CUANDO HAY UNA VULNERABILIDAD O ALGO ASI Y SE DESEA RESTAURAR TODO,
+TAMBIEN ES PARA FORZAR QUE TODA LA GENTE PASE POR LA AUTORIZACION DE NUEVO
+- configurar el cors, instalar paquete de cors y asignarlo en el index del backend
+- 
+
+
+
+-----------------------------------------------------------------------------
+DESPLIEGUE EN LA NUBE DEL BACKEND:
+RAILWAY (ES GRATUITO) pero solo por 30 días, luego toca colocar tarjeta de crédito para el modo hobbie
+
+- Desplegarlo con GitHub, agregar variables de entorno manualmente, solo es pegar y ya, no pegar el puerto, eso lo asigna railway por defecto
+- Los cambios que se haga en GitHub se reflejan en railway
+- Actualizar el dominio, en este caso le puse react-mern-calendar-2025 y esperar
+- Hay un error con la conexión de los endpointes pero se soluciona con este comentario de la clase de Udemy:
+	Ya logre solucionar el error, el error se originaba aqui: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that 	you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist
+	lo que me sirvió es lo siguiente:
+
+	Meterme en mi user de MongoDB Atlas y irme a la siguiente ruta:
+
+
+	MongoDB Atlas-> NetworkAccess-> Edit->Allow Any
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

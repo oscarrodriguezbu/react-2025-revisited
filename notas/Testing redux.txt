@@ -1,8 +1,10 @@
 Testing redux:
 - Se crear una carpeta fixtures en test, aquí queda los diferentes estados que se esperan de los reducers al hacer las pruebas, como si fueran mocks
+- Los fixtures son muy utiles Tambien para no llamar a la base de datos y trabajar con el store de forma segura
 - los slice básicamente se les manda el estado mockeados en fixtures y la accion respectiva para evaliar el resultado del estado cambiado
 - En el caso de firebase en tunks, toca crear un mock de todo el modulo de firebase pero solo en modulos de autenticación como login y etc porque no requiere el mismo nivel de detalle de
 	otras secciones donde se almacene data, también toca limpiar la data agregada para las pruebas
 - Crear mock del dispatch
 - Una prueba fácil de los thunks es mirar si han sido llamados con x cosa
+- El store se puede mockear para trabajar comodamente con sus propiedades en las pruebas
 - 
