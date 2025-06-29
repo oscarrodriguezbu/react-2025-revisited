@@ -1,0 +1,49 @@
+TanStack Query
+- No hace peticiones https, solo administra funciones, es un complemento
+- Básicamente es para optimizar peticiones http
+- colocar un componente padre (QueryClientProvider) en el main o el nivel mas alto de la aplicación
+- Tiene un devtools entre sus instalaciones que no se ve en producción. Es como un icono de una palmera de la aplicacion en el navegador web
+- useQuery:
+	const { isLoading, data, error, refetch } = useQuery({ //refetch es para disparar nuevamente la funcion que se le mande
+    		queryKey: ['randomNumber'], //es como para validar lo que se le manda, para evitar peticiones http inescesarias
+    		queryFn: getCryptoNumber, //la funcion que se ejecuta cuando cumple la condicion
+  	});
+- El valor de queryKey se optiene de la url en cuestión, de esa forma si la url tiene por ejemplo randomNumber, entonces el useQuery lo intercepta para trabajar con sus propiedades en cuestion
+- Si se hace una solicitur con la misma llave desde diferentes componentes, entonces esa llave va a mantener sus funcionalidades en todos los componentes y comparte su data
+- otras propiedades:
+	// retry: false, //retry: 3, reintentos antes de tener un error
+    // refetchOnWindowFocus: false, // si no quiero que la informacion esté lo mas fresca posible, es decir, que si se sale de la pantalla
+    //y regresa, entonces vuelve a ejecutar la peticion y esto lo evita
+    //staleTime: 1000 * 5 //5 segundos, mantiene la data fresca
+- Se puede configurar propiedades globales desde el main
+- // placeholderData: [ //* informacion temporal mientras se hace la solicitud y se trae la info actualizada
+- //* similar al placeHoldeData si no hay staleTime, de lo contrario esta data se considera fresca hasta que pase el tiempo o se fuerce el refreh
+- prefetchQuery se usa para disparar algo, en este caso la peticion http
+- Se puede colocar un watch del react form hook como complemento y por ejemplo estar pendiente que la imagen cambie en tiempo real
+
+
+
+
+-----------------
+Configuración de React Query
+DevTools
+	Caché
+	Fresh
+	Stale
+	Inactive
+	Fetching
+Propiedades como:
+	stale time
+	placeholderData
+	initialDate
+Pre-fetch de queries
+Establecer data en el caché 
+Establecer data en caché específico
+Cargar data bajo demanda
+QueryClient
+
+-MUTACIONES: 
+ -Útil para actualizaciones optimistas. Se encarga de actualizar la data
+ - Se recomienda hacer un custom hook para la configuración de las mutaciones
+ - En cierta forma me recuerda la estructura de un subscribe de un endpoint en angular
+ - 
