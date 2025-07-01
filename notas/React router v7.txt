@@ -1,0 +1,91 @@
+React router v7:
+Se puede usar como libreria si se usa con react SPA.
+Si el SEO es importante entonces se puede usar como framework, pero puede ser mejor next
+
+
+
+
+-----------------------------
+PROYECTO #1 DEL CURSO:
+Este proyecto se generó con IA para los componentes, la intención de este es centrarse en el funcionamiento e implementacion del react router como libreria
+
+- SECCION 1:
+Pero lo integraremos con:
+ShadCN --> libreria de componentes
+TailwindCSS --> estilos
+
+- SECCION 2:
+fundamentos de React Router, los cuales son:
+
+Rutas
+Rutas padres (Nested Routes)
+Rutas Hijas 
+Outlets:  SIRVE PARA RENDERIZAR RUTA HIJA DENTRO DEL PADRE
+Segmentación 
+useParams
+Parametros de rutas
+Navegación manual
+Link
+NavLink
+Suspense
+Lazy Load
+
+
+- SECCION 3:
+TanStack mutations
+Rutas privadas
+Caché
+Invalidación de queries
+Query Client como gestor de estado
+
+
+
+-----------------------------
+PROYECTO #2 DEL CURSO:
+React Router como framework
+Tiene un sistema de rutas propio, aunque se puede hacer Tambien de la forma tradicional instalando otras librerias
+Ya viene con Tailwind instalado
+
+- SECCION 1:
+En esta sección, trabajaremos con React Router como framework. Además de las recomendaciones y sugerencias, abordaremos temas como:
+
+RouteConfig
+Route Module
+Separación de responsabilidades
+Nested Routes (rutas hijas)
+TailwindCSS
+V0
+Shadcn
+Prefijos
+Layouts
+useNavigation
+
+
+- SECCION 2:
+En esta sección, trabajaremos y aprenderemos sobre los siguientes temas:
+
+ Server Actions
+ Client Actions
+ Loader
+ Client Loader
+ Argumentos dinámicos
+ Segmentos de rutas
+ Hydratation Loaders
+
+- SECCION 3:
+En esta sección, abordaremos temas relacionados con la autenticación de usuarios mediante sesiones, incluyendo:
+
+Cookies de sesión
+Liberación de sesión
+Destrucción de sesión
+Guardias
+Acciones en archivos independientes
+Caducidad de sesión
+
+
+
+
+
+
+
+
