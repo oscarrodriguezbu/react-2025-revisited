@@ -24,7 +24,9 @@ git add .
 git commit -m "first commit"
 git push -u origin main
 
-
+git add .
+git commit -m "Comentarios agregados"
+git push
 
 ------------------produccion de frontend:-------------------------
 npm run build
@@ -32,3 +34,86 @@ npm run build
 Se genera una carpeta dist y lo que está adentro toca pegarlo en la carpeta public del backend
 
 Desplegar o subir cambios del backend en GitHub, railway toma los cambios del GitHub si ya se habia desplegado antes y se actualizó el repo del backend
+
+------------------fork de un proyecto con todas sus ramas:-------------------------
+
+
+1.Clona tu fork:
+git clone https://github.com/tu-usuario/mi-fork.git
+cd mi-fork
+
+2.Agrega el remoto del original:
+
+git remote add upstream https://github.com/original/proyecto.git
+
+3. Verifica que tengas dos remotos:
+git remote -v
+
+4. Trae todas las ramas del original:
+git fetch upstream
+
+5. Lista las ramas del remoto original:
+
+git branch -r
+
+6. Verás algo como:
+
+origin/main
+upstream/dev
+upstream/feature/x
+…
+
+7. Para trabajar con una rama del original:
+git checkout -b dev upstream/dev
+
+o
+
+git fetch upstream
+
+for branch in \
+  component-compound \
+  component-control-props \
+  component-control-props-alt \
+  component-extend-styles \
+  component-state-initializer \
+  forms \
+  forms-dynamic \
+  lazyload \
+  lazyload-nested \
+  lazyload-nested-rrd6 \
+  lazyload-rrd-v6 \
+  main-router-v6
+do
+  git checkout -b "$branch" "upstream/$branch"
+done
+
+
+8. Empuja esa rama a tu fork (GitHub remoto origin)
+
+for branch in \
+  component-compound \
+  component-control-props \
+  component-control-props-alt \
+  component-extend-styles \
+  component-state-initializer \
+  forms \
+  forms-dynamic \
+  lazyload \
+  lazyload-nested \
+  lazyload-nested-rrd6 \
+  lazyload-rrd-v6 \
+  main-router-v6
+do
+  git checkout $branch
+  git push origin $branch
+done
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
