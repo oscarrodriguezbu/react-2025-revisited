@@ -108,6 +108,14 @@ do
   git push origin $branch
 done
 
+
+9. Subir cambios a una rama de mi github:
+```bash
+git add .
+git commit -m "Comentarios agregados"
+git push -u origin component-compound
+```
+Si se pone git push entonces intenta acceder a la rama del repo orignal
 ----------------------------------------------------------------------------------------------------
 
 
