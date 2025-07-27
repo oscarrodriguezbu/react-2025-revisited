@@ -113,7 +113,7 @@ done
 ```bash
 git add .
 git commit -m "Comentarios agregados"
-git push -u origin component-compound
+git push -u origin component-compound //nombre ejemplo de la rama
 ```
 Si se pone git push entonces intenta acceder a la rama del repo orignal
 ----------------------------------------------------------------------------------------------------
