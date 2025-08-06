@@ -13,4 +13,4 @@ comandos vs code:
 - CTRL + . Es para importar o para llenar propiedades requeridas de un componente
 - CTRL + Ñ Es para abrir la terminal 
 - CTRL + Espacio es para el intelisense,muy util para cosas con css, tailwind, html etc
-- 
+- CTRL + ALT + I Es para abrir el chat del copilot
