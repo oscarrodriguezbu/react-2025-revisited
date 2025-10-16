@@ -28,6 +28,21 @@ git add .
 git commit -m "Comentarios agregados"
 git push
 
+git add .
+git commit -m "Se agrega el frontend construido en React en la carpeta public"
+git push
+
+git commit -m "Se agregan validacion de espacios en blanco y saltos de linea en la descripcion de la deuda."
+
+
+git commit --amend -m "Se agrega endpoint checkAuthStatus"
+git push
+
+
+git add .
+git commit -m "Notas agregadas del proyecto pokedex"
+git push
+
 ------------------produccion de frontend:-------------------------
 npm run build
 
@@ -118,7 +133,10 @@ git push -u origin component-compound //nombre ejemplo de la rama
 Si se pone git push entonces intenta acceder a la rama del repo orignal
 ----------------------------------------------------------------------------------------------------
 
+Al estar en un proyecto o repo de GitHub, podemos oprimir . y eso abre un edito de codigo online de VS Code
 
+
+----------------------------------------------------------------------------------------------------
 
 
 
